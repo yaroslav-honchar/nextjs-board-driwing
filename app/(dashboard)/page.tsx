@@ -1,9 +1,4 @@
 import React from "react"
-import { UserButton } from "@clerk/nextjs"
 
-const DashboardPage: React.FC = () => (
-  <>
-    <UserButton />
-  </>
-)
+const DashboardPage: React.FC = () => <>Dashboard page</>
 export default DashboardPage
