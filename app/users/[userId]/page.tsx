@@ -1,7 +1,7 @@
 import React from "react"
-import type { IPageProps } from "./page.props"
+import type { IUserIdPageProps } from "./page.props"
 
-const UserIdPage: React.FC<IPageProps> = () => {
+const UserIdPage: React.FC<Readonly<IUserIdPageProps>> = () => {
   return <>User id page</>
 }
 

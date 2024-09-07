@@ -1,4 +1,4 @@
-export interface IPageProps {
+export interface IUserIdPageProps {
   params: {
     userId: string
   }
