@@ -2,10 +2,12 @@ import type { Metadata } from "next"
 import type { PropsWithChildren } from "react"
 import React from "react"
 import { cn } from "@/lib/utils"
-import { Urbanist } from "next/dist/compiled/@next/font/dist/google"
+import { ConvexClientProvider } from "@/providers/convex-client.provider"
+import { Urbanist } from "next/font/google"
 import "./globals.css"
 
 const font = Urbanist({
+  subsets: ["latin"],
   weight: ["200", "400", "600", "700", "800", "900"],
 })
 
@@ -15,8 +17,10 @@ export const metadata: Metadata = {
 }
 
 const RootLayout: React.FC<Readonly<PropsWithChildren>> = ({ children }) => (
-  <html lang="en">
-    <body className={cn(font.className, "antialiased")}>{children}</body>
-  </html>
+  <ConvexClientProvider>
+    <html lang="en">
+      <body className={cn(font.className, "antialiased")}>{children}</body>
+    </html>
+  </ConvexClientProvider>
 )
 export default RootLayout
