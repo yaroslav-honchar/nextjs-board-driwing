@@ -3,7 +3,6 @@
 import { PlusIcon } from "lucide-react"
 import React from "react"
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { ClientRoutes } from "@/routes/client.route"
 import { CreateOrganization } from "@clerk/nextjs"
 
 export const ButtonNew: React.FC = () => {
@@ -24,7 +23,7 @@ export const ButtonNew: React.FC = () => {
       <DialogContent className="p-0 bg-transparent border-none max-w-[30rem]">
         <DialogDescription className={"sr-only"}>Create new organization</DialogDescription>
         <DialogTitle className={"sr-only"}>Create new organization</DialogTitle>
-        <CreateOrganization path={ClientRoutes.home} />
+        <CreateOrganization routing={"hash"} />
       </DialogContent>
     </Dialog>
   )
