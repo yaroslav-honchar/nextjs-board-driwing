@@ -2,7 +2,8 @@
 
 import { PlusIcon } from "lucide-react"
 import React from "react"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { ClientRoutes } from "@/routes/client.route"
 import { CreateOrganization } from "@clerk/nextjs"
 
 export const ButtonNew: React.FC = () => {
@@ -13,7 +14,7 @@ export const ButtonNew: React.FC = () => {
           <button
             className="bg-white/25 size-full rounded-md flex items-center justify-center opacity-60 hover:opacity-100 transition"
             type="button"
-            aria-label="Create new"
+            aria-label={"Create new organization"}
             aria-expanded="false"
           >
             <PlusIcon className="size-5 text-white" />
@@ -21,7 +22,9 @@ export const ButtonNew: React.FC = () => {
         </div>
       </DialogTrigger>
       <DialogContent className="p-0 bg-transparent border-none max-w-[30rem]">
-        <CreateOrganization />
+        <DialogDescription className={"sr-only"}>Create new organization</DialogDescription>
+        <DialogTitle className={"sr-only"}>Create new organization</DialogTitle>
+        <CreateOrganization path={ClientRoutes.home} />
       </DialogContent>
     </Dialog>
   )

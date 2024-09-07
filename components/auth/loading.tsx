@@ -10,6 +10,7 @@ export const Loading: React.FC = () => {
         alt={"Logo"}
         width={226}
         height={80}
+        priority={true}
       />
     </div>
   )
