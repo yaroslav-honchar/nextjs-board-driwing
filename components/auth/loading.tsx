@@ -8,8 +8,8 @@ export const Loading: React.FC = () => {
         className={"animate-pulse duration-800"}
         src={"/icon.svg"}
         alt={"Logo"}
-        width={226}
-        height={80}
+        width={169}
+        height={60}
         priority={true}
       />
     </div>
