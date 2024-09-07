@@ -1,9 +1,9 @@
 import React from "react"
 import { UserButton } from "@clerk/nextjs"
 
-const Home: React.FC = () => (
+const DashboardPage: React.FC = () => (
   <>
     <UserButton />
   </>
 )
-export default Home
+export default DashboardPage
