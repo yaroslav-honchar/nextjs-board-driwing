@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 }
 
 const RootLayout: React.FC<Readonly<PropsWithChildren>> = ({ children }) => (
-  <ConvexClientProvider>
-    <html lang="en">
-      <body className={cn(font.className, "antialiased")}>{children}</body>
-    </html>
-  </ConvexClientProvider>
+  <html lang="en">
+    <body className={cn(font.className, "antialiased")}>
+      <ConvexClientProvider>{children}</ConvexClientProvider>
+    </body>
+  </html>
 )
 export default RootLayout
