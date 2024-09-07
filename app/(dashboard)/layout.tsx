@@ -4,6 +4,8 @@ import { OrgSidebar } from "./_components/org-sidebar"
 import { Sidebar } from "./_components/sidebar/sidebar"
 import type { IDashboardLayoutProps } from "./layout.props"
 
+export const revalidate = 0
+
 const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
   return (
     <main className={"size-full"}>
