@@ -1,8 +1,8 @@
 "use client"
 
 import React from "react"
-import { InviteMember } from "@/app/(dashboard)/_components/invite-member"
 import { OrganizationSwitcher } from "@/components/organization-switcher/organization-switcher"
+import { InviteMember } from "./components/invite-member"
 import { SearchInput } from "./components/search-input"
 import { UserButton, useOrganization } from "@clerk/nextjs"
 

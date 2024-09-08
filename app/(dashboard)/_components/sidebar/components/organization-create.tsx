@@ -3,10 +3,11 @@
 import { PlusIcon } from "lucide-react"
 import React from "react"
 import { Hint } from "@/components/hint/hint"
+import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { CreateOrganization } from "@clerk/nextjs"
 
-export const OrganizationCreate: React.FC = () => {
+export const OrganizationCreate: React.FC<{ triggerText?: string }> = ({ triggerText = false }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -16,15 +17,18 @@ export const OrganizationCreate: React.FC = () => {
             align={"center"}
             side={"right"}
             sideOffset={18}
+            toRender={!triggerText}
           >
-            <button
-              className="bg-white/25 size-full rounded-md flex items-center justify-center opacity-60 hover:opacity-100 transition"
-              type="button"
+            <Button
+              className={triggerText ? "gap-2" : "size-10"}
               aria-label={"Create new organization"}
               aria-expanded="false"
+              size={triggerText ? "default" : "icon"}
+              variant={"secondary"}
             >
-              <PlusIcon className="size-5 text-white" />
-            </button>
+              <PlusIcon className={triggerText ? "size-4" : "size-5"} />
+              {triggerText && <>{triggerText}</>}
+            </Button>
           </Hint>
         </div>
       </DialogTrigger>

@@ -6,4 +6,5 @@ export interface IHintProps extends PropsWithChildren {
   align?: "start" | "center" | "end"
   sideOffset?: number
   alignOffset?: number
+  toRender?: boolean
 }

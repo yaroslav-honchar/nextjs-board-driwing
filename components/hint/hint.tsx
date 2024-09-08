@@ -2,7 +2,18 @@ import React from "react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import type { IHintProps } from "./hint.props"
 
-export const Hint: React.FC<IHintProps> = ({ label, children, side, align, sideOffset, alignOffset }) => {
+export const Hint: React.FC<IHintProps> = ({
+  label,
+  children,
+  side,
+  align,
+  sideOffset,
+  alignOffset,
+  toRender = true,
+}) => {
+  if (!toRender) {
+    return children
+  }
   return (
     <TooltipProvider>
       <Tooltip delayDuration={100}>
