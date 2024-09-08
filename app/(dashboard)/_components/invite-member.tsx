@@ -9,11 +9,12 @@ export const InviteMember: React.FC = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className={"gap-2"}
+          className={"gap-2 border-muted border shadow-none text-muted-foreground"}
           variant={"outline"}
+          size={"sm"}
         >
           <PlusIcon className={"size-5"} />
-          Invite members
+          <span className={"max-sm:hidden"}>Invite members</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="p-0 bg-transparent border-none w-fit max-w-fit">

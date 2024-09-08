@@ -13,7 +13,7 @@ const DashboardLayout: React.FC<IDashboardLayoutProps> = ({ children }) => {
       <div className={"ps-16 h-full"}>
         <div className={"flex gap-x-3 h-full"}>
           <OrganizationSidebar />
-          <div className={"h-full flex-1"}>
+          <div className={"h-full flex-1 flex-col flex"}>
             <Navbar />
             {children}
           </div>
