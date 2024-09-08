@@ -31,7 +31,14 @@ export const OrganizationCreate: React.FC = () => {
       <DialogContent className="p-0 bg-transparent border-none w-fit max-w-[30rem]">
         <DialogDescription className={"sr-only"}>Create new organization</DialogDescription>
         <DialogTitle className={"sr-only"}>Create new organization</DialogTitle>
-        <CreateOrganization routing={"hash"} />
+        <CreateOrganization
+          routing={"hash"}
+          appearance={{
+            elements: {
+              rootBox: "relative z-[0]",
+            },
+          }}
+        />
       </DialogContent>
     </Dialog>
   )
