@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar } from "./_components/navbar"
+import { Navbar } from "./_components/navbar/navbar"
 import { OrganizationSidebar } from "./_components/organization-sidebar"
 import { Sidebar } from "./_components/sidebar/sidebar"
 import type { IDashboardLayoutProps } from "./layout.props"

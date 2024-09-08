@@ -22,11 +22,13 @@
     "convex": "^1.15.0",
     "lucide-react": "^0.439.0",
     "next": "14.2.8",
+    "query-string": "^9.1.0",
     "react": "^18",
     "react-dom": "^18",
     "shadcn-ui": "^0.9.0",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",

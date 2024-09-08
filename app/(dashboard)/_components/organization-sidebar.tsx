@@ -3,10 +3,10 @@
 import { StarIcon } from "lucide-react"
 import React from "react"
 import { fontSecondary } from "@/app/_fonts/google"
+import { OrganizationSwitcher } from "@/components/organization-switcher/organization-switcher"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ClientRoutes } from "@/routes/client.route"
-import { OrganizationSwitcher } from "@clerk/nextjs"
 import { DashboardIcon } from "@radix-ui/react-icons"
 import Image from "next/image"
 import Link from "next/link"
@@ -30,15 +30,7 @@ export const OrganizationSidebar: React.FC = () => {
           <span className={cn(fontSecondary.className, "font-semibold text-2xl")}>Board</span>
         </div>
       </Link>
-      <OrganizationSwitcher
-        hidePersonal
-        appearance={{
-          elements: {
-            rootBox: "w-full flex items-center justify-center mt-5",
-            organizationSwitcherTrigger: "p-1 rounded-md rounded-lg border border-muted w-full justify-between",
-          },
-        }}
-      />
+      <OrganizationSwitcher />
       <div className={"space-y-1 w-full"}>
         <Button
           asChild
