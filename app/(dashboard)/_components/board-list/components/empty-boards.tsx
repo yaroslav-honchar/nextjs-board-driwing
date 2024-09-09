@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { CenteredScreenMessage } from "@/components/ui/centered-screen-message"
 import { api } from "@/convex/_generated/api"
@@ -21,6 +22,12 @@ export const EmptyBoards: React.FC = () => {
       orgId: organization.id,
       title: "Untitled",
     })
+      .then(() => {
+        toast.success("Board created successfully")
+      })
+      .catch(() => {
+        toast.error("Failed to create board")
+      })
   }
 
   return (
