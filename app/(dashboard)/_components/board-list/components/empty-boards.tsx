@@ -1,9 +1,28 @@
+"use client"
+
 import React from "react"
 import { Button } from "@/components/ui/button"
 import { CenteredScreenMessage } from "@/components/ui/centered-screen-message"
+import { api } from "@/convex/_generated/api"
+import { useApiMutation } from "@/hooks/use-api-mutation"
+import { useOrganization } from "@clerk/nextjs"
 import Image from "next/image"
 
 export const EmptyBoards: React.FC = () => {
+  const { organization } = useOrganization()
+  const { mutate, isPending } = useApiMutation(api.board.create)
+
+  const onClick = () => {
+    if (!organization) {
+      return
+    }
+
+    mutate({
+      orgId: organization.id,
+      title: "Untitled",
+    })
+  }
+
   return (
     <CenteredScreenMessage>
       <Image
@@ -17,7 +36,13 @@ export const EmptyBoards: React.FC = () => {
       <h2 className={"text-2xl font-semibold"}>Create your first board!</h2>
       <p className={"text-center text-muted-foreground"}>Start by creating your a first board for your organization</p>
       <div>
-        <Button variant={"secondary"}>Create board</Button>
+        <Button
+          variant={"secondary"}
+          onClick={onClick}
+          disabled={isPending}
+        >
+          Create board
+        </Button>
       </div>
     </CenteredScreenMessage>
   )
