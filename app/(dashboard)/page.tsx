@@ -17,7 +17,7 @@ const DashboardPage: React.FC<IDashboardPageProps> = ({ searchParams }) => {
         ) : (
           <BoardList
             query={searchParams}
-            organizationId={organization.id}
+            orgId={organization.id}
           />
         )}
       </div>

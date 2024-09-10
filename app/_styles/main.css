@@ -1,3 +1,5 @@
+/* All color variables as you can see the properties is in hsl format */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,14 +11,14 @@ body,
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 0, 0%, 100%;
+  --foreground: 0, 0%, 9%;
 }
 
 /*@media (prefers-color-scheme: dark) {*/
 /*  :root {*/
-/*    --background: #0a0a0a;*/
-/*    --foreground: #ededed;*/
+/*    --background: 0, 0%, 4%;*/
+/*    --foreground: 0, 0%, 93%;*/
 /*  }*/
 /*}*/
 

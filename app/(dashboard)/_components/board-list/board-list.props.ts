@@ -1,6 +1,6 @@
 import type { DashboardPageSearchParamsType } from "../../page.props"
 
 export interface IBoardListProps {
-  organizationId: string
+  orgId: string
   query: DashboardPageSearchParamsType
 }
