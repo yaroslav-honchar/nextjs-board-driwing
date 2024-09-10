@@ -4,6 +4,7 @@ import type { IRootLayoutProps } from "@/app/layout.props"
 import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils"
 import { ConvexClientProvider } from "@/providers/convex-client.provider"
+import { ModalsProvider } from "@/providers/modals.provider"
 import { fontPrimary } from "./_fonts/google"
 import "./_styles/main.css"
 
@@ -16,8 +17,9 @@ const RootLayout: React.FC<Readonly<IRootLayoutProps>> = ({ children }) => (
   <html lang="en">
     <body className={cn(fontPrimary.className, "antialiased")}>
       <ConvexClientProvider>
-        <Toaster />
         {children}
+        <Toaster />
+        <ModalsProvider />
       </ConvexClientProvider>
     </body>
   </html>

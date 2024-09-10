@@ -1,8 +1,9 @@
 "use client"
 
 import { formatDistanceToNow } from "date-fns"
-import { StarIcon } from "lucide-react"
+import { MoreHorizontalIcon, StarIcon } from "lucide-react"
 import React from "react"
+import { Actions } from "@/components/actions/actions"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ClientRoutes } from "@/routes/client.route"
@@ -25,6 +26,12 @@ export const BoardCard: React.FC<IBoardCardProps> = ({
   const createdAtLabel = formatDistanceToNow(new Date(createdAt), { addSuffix: true })
 
   const onFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+
+  const onActionClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     event.stopPropagation()
   }
 
@@ -35,12 +42,30 @@ export const BoardCard: React.FC<IBoardCardProps> = ({
     >
       <span className={"block relative flex-1 bg-amber-50"}>
         <Image
+          className={"object-center object-cover"}
           src={imageUrl}
           alt={title}
           fill
-          objectFit={"cover"}
         />
         <div className={"block opacity-0 group-hover:opacity-50 transition-opacity size-full bg-black"} />
+        <Actions
+          id={id}
+          title={title}
+          side={"bottom"}
+          sideOffset={12}
+        >
+          <Button
+            className={
+              "absolute top-2 right-2 lg:opacity-0 lg:pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all lg:text-white size-6"
+            }
+            variant={"ghost"}
+            size={"icon"}
+            onClick={onActionClick}
+            asChild
+          >
+            <MoreHorizontalIcon className={"size-4"} />
+          </Button>
+        </Actions>
       </span>
       <span className={"flex flex-col gap-y-2 relative bg-white p-3 rounded-lg"}>
         <span className={"flex items-center justify-between gap-3"}>
