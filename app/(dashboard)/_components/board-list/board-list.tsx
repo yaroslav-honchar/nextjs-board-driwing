@@ -49,7 +49,7 @@ export const BoardList: React.FC<IBoardListProps> = ({ query, orgId }) => {
       <BoardGrid>
         <CreateBoardButton orgId={orgId} />
 
-        {data.map(({ _id, title, orgId, authorId, authorName, imageUrl, _creationTime }) => {
+        {data.map(({ _id, title, orgId, authorId, authorName, imageUrl, _creationTime, isFavorite }) => {
           return (
             <BoardCard
               key={_id}
@@ -60,7 +60,7 @@ export const BoardList: React.FC<IBoardListProps> = ({ query, orgId }) => {
               authorName={authorName}
               imageUrl={imageUrl}
               createdAt={_creationTime}
-              isFavorite={false}
+              isFavorite={isFavorite}
             />
           )
         })}

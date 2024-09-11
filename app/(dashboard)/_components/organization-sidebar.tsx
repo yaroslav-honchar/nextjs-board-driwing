@@ -58,7 +58,7 @@ export const OrganizationSidebar: React.FC = () => {
             }}
           >
             <StarIcon className={"size-5"} />
-            Team boards
+            Favorite boards
           </Link>
         </Button>
       </div>

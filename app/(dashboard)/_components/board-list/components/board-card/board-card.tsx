@@ -3,8 +3,11 @@
 import { formatDistanceToNow } from "date-fns"
 import { MoreHorizontalIcon, StarIcon } from "lucide-react"
 import React from "react"
+import { toast } from "sonner"
 import { Actions } from "@/components/actions/actions"
 import { Button } from "@/components/ui/button"
+import { api } from "@/convex/_generated/api"
+import { useApiMutation } from "@/hooks/use-api-mutation"
 import { cn } from "@/lib/utils"
 import { ClientRoutes } from "@/routes/client.route"
 import { useAuth } from "@clerk/nextjs"
@@ -20,19 +23,41 @@ export const BoardCard: React.FC<IBoardCardProps> = ({
   imageUrl,
   authorId,
   isFavorite,
+  orgId,
 }) => {
   const { userId } = useAuth()
   const authorLabel = authorId === userId ? "You" : authorName
   const createdAtLabel = formatDistanceToNow(new Date(createdAt), { addSuffix: true })
-
-  const onFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    event.stopPropagation()
-  }
+  const { mutate: favoriteMutate, isPending: isFavoritePending } = useApiMutation(api.board.favorite)
+  const { mutate: unfavoriteMutate, isPending: isUnfavoritePending } = useApiMutation(api.board.unfavorite)
 
   const onActionClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     event.stopPropagation()
+  }
+
+  const onFavoriteClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (isFavorite) {
+      console.log("unfavorite")
+      unfavoriteMutate({ id })
+        .then(() => {
+          toast.success("Board removed from favorites")
+        })
+        .catch(() => {
+          toast.error("Failed to remove board from favorites")
+        })
+    } else {
+      favoriteMutate({ id, orgId })
+        .then(() => {
+          toast.success("Board added to favorites")
+        })
+        .catch(() => {
+          toast.error("Failed to add board to favorites")
+        })
+    }
   }
 
   return (
@@ -75,8 +100,14 @@ export const BoardCard: React.FC<IBoardCardProps> = ({
             variant={"ghost"}
             size={"icon"}
             onClick={onFavoriteClick}
+            disabled={isFavoritePending || isUnfavoritePending}
           >
-            <StarIcon className={cn("size-3", isFavorite ? "text-yellow-500 fill-yellow-500" : "text-gray-400")} />
+            <StarIcon
+              className={cn(
+                "size-3 transition-colors",
+                isFavorite ? "text-yellow-500 fill-yellow-500" : "text-gray-400",
+              )}
+            />
           </Button>
         </span>
         <span className={"text-sm text-muted-foreground truncate "}>
