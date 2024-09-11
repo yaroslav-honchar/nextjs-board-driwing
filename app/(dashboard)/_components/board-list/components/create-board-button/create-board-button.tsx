@@ -6,9 +6,12 @@ import { toast } from "sonner"
 import { api } from "@/convex/_generated/api"
 import { useApiMutation } from "@/hooks/use-api-mutation"
 import { cn } from "@/lib/utils"
+import { ClientRoutes } from "@/routes/client.route"
+import { useRouter } from "next/navigation"
 import type { ICreateBoardButtonProps } from "./create-board-button.props"
 
 export const CreateBoardButton: React.FC<ICreateBoardButtonProps> = ({ orgId, disabled }) => {
+  const router = useRouter()
   const { mutate, isPending } = useApiMutation<typeof api.board.create._args, typeof api.board.create._returnType>(
     api.board.create,
   )
@@ -23,12 +26,8 @@ export const CreateBoardButton: React.FC<ICreateBoardButtonProps> = ({ orgId, di
         toast.success("Board created successfully", {
           duration: 115000,
         })
-        console.log(id)
-        /**
-         * TODO: Redirect to the newly created board
-         *
-         * ClientRoutes.board(id)
-         * */
+
+        router.push(ClientRoutes.board(id))
       })
       .catch(() => {
         toast.error("Failed to create board")

@@ -13,21 +13,38 @@ import { useQuery } from "convex/react"
 import type { IBoardListProps } from "./board-list.props"
 
 export const BoardList: React.FC<IBoardListProps> = ({ query, orgId }) => {
-  const data = useQuery(api.boards.get, { orgId: orgId })
+  const data = useQuery(api.boards.get, { orgId: orgId, ...query })
 
   if (data === undefined) {
     return (
-      <BoardGrid>
-        <CreateBoardButton
-          orgId={orgId}
-          disabled={true}
-        />
-        <BoardCardSkeleton />
-        <BoardCardSkeleton />
-        <BoardCardSkeleton />
-        <BoardCardSkeleton />
-        <BoardCardSkeleton />
-      </BoardGrid>
+      <>
+        <h2 className={"text-3xl"}>Loading boards...</h2>
+        <BoardGrid>
+          <CreateBoardButton
+            orgId={orgId}
+            disabled={true}
+          />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+          <BoardCardSkeleton />
+        </BoardGrid>
+      </>
     )
   }
 
@@ -47,7 +64,7 @@ export const BoardList: React.FC<IBoardListProps> = ({ query, orgId }) => {
     <>
       <h2 className={"text-3xl"}>{query.favorites ? "Favorites" : "Team"} boards</h2>
       <BoardGrid>
-        <CreateBoardButton orgId={orgId} />
+        {!query.favorites && <CreateBoardButton orgId={orgId} />}
 
         {data.map(({ _id, title, orgId, authorId, authorName, imageUrl, _creationTime, isFavorite }) => {
           return (

@@ -1,6 +1,6 @@
 export type DashboardPageSearchParamsType = {
   search?: string
-  favorites?: boolean
+  favorites?: string
 }
 
 export interface IDashboardPageProps {

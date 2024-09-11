@@ -53,7 +53,7 @@ export const OrganizationSidebar: React.FC = () => {
             href={{
               pathname: ClientRoutes.home,
               query: {
-                favorites: true,
+                favorites: "1",
               },
             }}
           >

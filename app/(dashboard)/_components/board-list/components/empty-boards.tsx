@@ -6,10 +6,13 @@ import { Button } from "@/components/ui/button"
 import { CenteredScreenMessage } from "@/components/ui/centered-screen-message"
 import { api } from "@/convex/_generated/api"
 import { useApiMutation } from "@/hooks/use-api-mutation"
+import { ClientRoutes } from "@/routes/client.route"
 import { useOrganization } from "@clerk/nextjs"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export const EmptyBoards: React.FC = () => {
+  const router = useRouter()
   const { organization } = useOrganization()
   const { mutate, isPending } = useApiMutation<typeof api.board.create._args, typeof api.board.create._returnType>(
     api.board.create,
@@ -24,8 +27,9 @@ export const EmptyBoards: React.FC = () => {
       orgId: organization.id,
       title: "Untitled",
     })
-      .then(() => {
+      .then((id) => {
         toast.success("Board created successfully")
+        router.push(ClientRoutes.board(id))
       })
       .catch(() => {
         toast.error("Failed to create board")
