@@ -1,6 +1,12 @@
 import { create } from "zustand"
+import type { Id } from "@/convex/_generated/dataModel"
 
-const defaultValues = {
+type RenameModalValuesType = {
+  id: Id<"boards"> | string
+  title: string
+}
+
+const defaultValues: RenameModalValuesType = {
   id: "",
   title: "",
 }

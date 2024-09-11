@@ -11,7 +11,9 @@ import Image from "next/image"
 
 export const EmptyBoards: React.FC = () => {
   const { organization } = useOrganization()
-  const { mutate, isPending } = useApiMutation(api.board.create)
+  const { mutate, isPending } = useApiMutation<typeof api.board.create._args, typeof api.board.create._returnType>(
+    api.board.create,
+  )
 
   const onClick = () => {
     if (!organization) {

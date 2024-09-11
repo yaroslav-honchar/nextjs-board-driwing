@@ -1,5 +1,7 @@
+import type { Id } from "@/convex/_generated/dataModel"
+
 export interface IBoardCardProps {
-  id: string
+  id: Id<"boards">
   createdAt: number
   title: string
   orgId: string

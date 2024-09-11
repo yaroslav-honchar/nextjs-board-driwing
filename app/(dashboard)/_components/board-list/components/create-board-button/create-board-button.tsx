@@ -9,7 +9,9 @@ import { cn } from "@/lib/utils"
 import type { ICreateBoardButtonProps } from "./create-board-button.props"
 
 export const CreateBoardButton: React.FC<ICreateBoardButtonProps> = ({ orgId, disabled }) => {
-  const { mutate, isPending } = useApiMutation(api.board.create)
+  const { mutate, isPending } = useApiMutation<typeof api.board.create._args, typeof api.board.create._returnType>(
+    api.board.create,
+  )
 
   const onClick = async () => {
     if (isPending || disabled) {

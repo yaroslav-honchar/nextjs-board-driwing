@@ -28,8 +28,14 @@ export const BoardCard: React.FC<IBoardCardProps> = ({
   const { userId } = useAuth()
   const authorLabel = authorId === userId ? "You" : authorName
   const createdAtLabel = formatDistanceToNow(new Date(createdAt), { addSuffix: true })
-  const { mutate: favoriteMutate, isPending: isFavoritePending } = useApiMutation(api.board.favorite)
-  const { mutate: unfavoriteMutate, isPending: isUnfavoritePending } = useApiMutation(api.board.unfavorite)
+  const { mutate: favoriteMutate, isPending: isFavoritePending } = useApiMutation<
+    typeof api.board.favorite._args,
+    typeof api.board.favorite._returnType
+  >(api.board.favorite)
+  const { mutate: unfavoriteMutate, isPending: isUnfavoritePending } = useApiMutation<
+    typeof api.board.unfavorite._args,
+    typeof api.board.unfavorite._returnType
+  >(api.board.unfavorite)
 
   const onActionClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()

@@ -14,7 +14,9 @@ import type { IActionsProps } from "./actions.props"
 
 export const Actions: React.FC<IActionsProps> = ({ id, side, title, sideOffset, children }) => {
   const { onOpen: onOpenRenameModal } = useRenameModal()
-  const { mutate, isPending } = useApiMutation(api.board.remove)
+  const { mutate, isPending } = useApiMutation<typeof api.board.remove._args, typeof api.board.remove._returnType>(
+    api.board.remove,
+  )
 
   const onCopyLinkClick = () => {
     navigator.clipboard

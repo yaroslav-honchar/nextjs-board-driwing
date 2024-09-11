@@ -15,11 +15,14 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { api } from "@/convex/_generated/api"
+import type { Id } from "@/convex/_generated/dataModel"
 import { useApiMutation } from "@/hooks/use-api-mutation"
 import { useRenameModal } from "@/store/use-rename-modal"
 
 export const RenameModal: React.FC = () => {
-  const { mutate, isPending } = useApiMutation(api.board.update)
+  const { mutate, isPending } = useApiMutation<typeof api.board.update._args, typeof api.board.update._returnType>(
+    api.board.update,
+  )
   const {
     isOpen,
     onClose,
@@ -42,7 +45,7 @@ export const RenameModal: React.FC = () => {
       return
     }
 
-    mutate({ id, title: newTitle })
+    mutate({ id: id as Id<"boards">, title: newTitle })
       .then(() => {
         onClose()
         toast.success("Board renamed")
