@@ -2,13 +2,11 @@
 
 import { StarIcon } from "lucide-react"
 import React from "react"
-import { fontSecondary } from "@/app/_fonts/google"
+import { Logo } from "@/components/logo/logo"
 import { OrganizationSwitcher } from "@/components/organization-switcher/organization-switcher"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { ClientRoutes } from "@/routes/client.route"
 import { DashboardIcon } from "@radix-ui/react-icons"
-import Image from "next/image"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 
@@ -18,18 +16,7 @@ export const OrganizationSidebar: React.FC = () => {
 
   return (
     <div className={"hidden lg:flex flex-col space-y-6 w-[206px] ps-5 pt-5"}>
-      <Link href={"/"}>
-        <div className={"flex items-center gap-x-2"}>
-          <Image
-            src={"/icon.svg"}
-            alt={"logo"}
-            width={60}
-            height={20}
-            priority={true}
-          />
-          <span className={cn(fontSecondary.className, "font-semibold text-2xl")}>Board</span>
-        </div>
-      </Link>
+      <Logo />
       <OrganizationSwitcher />
       <div className={"space-y-1 w-full"}>
         <Button
