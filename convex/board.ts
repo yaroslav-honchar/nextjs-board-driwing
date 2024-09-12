@@ -1,4 +1,4 @@
-import { mutation } from "./_generated/server"
+import { mutation, query } from "./_generated/server"
 import { v } from "convex/values"
 
 const images = [
@@ -13,6 +13,15 @@ const images = [
   "/placeholders/9.svg",
   "/placeholders/10.svg",
 ]
+
+export const get = query({
+  args: {
+    id: v.id("boards"),
+  },
+  handler: async (ctx, { id }) => {
+    return await ctx.db.get(id)
+  },
+})
 
 export const create = mutation({
   args: {
